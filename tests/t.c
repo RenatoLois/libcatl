@@ -1,29 +1,15 @@
-#include "array-list/catl_array_list.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <catl/linked-list/catl_linked_list.h>
+
+#define catl_make_ptr(type, value) ( (void*) &(type) {value} )
 
 int main() {
-  catl_array_list_t* array_list = catl_array_list_create(sizeof(int), NULL, 0);
-  catl_array_list_pushback(array_list, (void*)&(int){1});
-  catl_array_list_pushback(array_list, (void*)&(int){2});
-  catl_array_list_pushback(array_list, (void*)&(int){3});
-  catl_array_list_pushback(array_list, (void*)&(int){4});
-  catl_array_list_pushback(array_list, (void*)&(int){5});
-  catl_array_list_pushback(array_list, (void*)&(int){6});
-  catl_array_list_pushback(array_list, (void*)&(int){7});
-  catl_array_list_pushback(array_list, (void*)&(int){8});
-  catl_array_list_pushback(array_list, (void*)&(int){9});
-  catl_array_list_pushback(array_list, (void*)&(int){10});
-  catl_array_list_pushback(array_list, (void*)&(int){11});
-  catl_array_list_pushback(array_list, (void*)&(int){12});
-  catl_array_list_pushback(array_list, (void*)&(int){13});
-  catl_array_list_pushback(array_list, (void*)&(int){14});
-  catl_array_list_pushback(array_list, (void*)&(int){15});
-  catl_array_list_pushback(array_list, (void*)&(int){16});
-  catl_array_list_pushback(array_list, (void*)&(int){17});
-  catl_array_list_pushback(array_list, (void*)&(int){18});
-  catl_array_list_pushback(array_list, (void*)&(int){19});
+  catl_linked_list_t* linked_list;
+  catl_linked_list_create(&linked_list, sizeof(float), free);
+  catl_linked_list_push_back(linked_list, catl_make_ptr(float, 1.0f));
 
-  for(int i=0; i<18; i++) {
-    printf("pos %d: ( %d )\n", i, *(int*)catl_array_list_get(array_list, i));
-  }
+  float* data;
+  catl_linked_list_get((void**)&data, linked_list, 0);
+  printf("%f\n", *data);
 }

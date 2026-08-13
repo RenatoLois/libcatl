@@ -1,3 +1,8 @@
+em queue, stack, array list e linked list e static list, tornar parametros const
+em linked list implementar get node
+
+
+// old
 documentate include/hash-algorithms/djb2.h
 documentate include/arena/arena.h
 

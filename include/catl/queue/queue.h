@@ -11,61 +11,18 @@ typedef struct {
   void (* delete_function )(void*);
 } catl_queue_t;
 
-/**
- * @brief  Create a new queue
- * @details  Uses free() if delete_function == NULL
- * @param size  Size of data
- * @param delete_function  Pointer to function used by catl_queue_destroy() and catl_queue_pop()
- * @return  catl_queue_t pointer or NULL if failed to allocate memory
- */
-catl_queue_t* catl_queue_create(size_t size, void (* delete_function )(void*));
+CatlExitStatus catl_queue_create(catl_queue_t** queue, size_t size, void (* delete_function )(void*));
 
-/**
- * @brief  Frees the memory allocated by catl_queue_create()
- * @details  This function uses queue->delete_function to free data
- * @param list  Pointer to the queue to be freed
- * @return CatlExitStatus indicating the result of the operation:
- *         - CATL_STATUS_OK if the list memory was successfully freed
- *         - CATL_STATUS_INVALID_MEMORY if list pointer is NULL
- */
 CatlExitStatus catl_queue_destroy(catl_queue_t* queue);
 
-/**
- * @brief  Verify if queue is empty
- * @param list  Pointer to the queue to be verified
- * @return true if the queue is empty, false otherwise
- */
-bool catl_queue_is_empty(catl_queue_t* queue);
+CatlExitStatus catl_queue_is_empty(bool* value, catl_queue_t* queue);
 
-/**
- * @brief  Removes the top element from the queue
- * @param queue  Pointer to the queue
- * @return CatlExitStatus indicating the result of the operation:
- *         - CATL_STATUS_OK if the element was successfully removed
- *         - CATL_STATUS_INVALID_MEMORY if queue pointer is NULL
- *         - CATL_STATUS_INVALID_POSITION if the queue is empty
- * @details  Calls queue->delete_function on the removed element if delete_function is set
- */
-CatlExitStatus catl_queue_dequeue(catl_queue_t* stack); // !!!!!  pop?
+CatlExitStatus catl_queue_push(catl_queue_t* queue, void* value);
 
-/**
- * @brief  Pushes a new element onto the top of the stack
- * @param stack  Pointer to the stack
- * @param value  Pointer to the data to be added
- * @return CatlExitStatus indicating the result of the operation:
- *         - CATL_STATUS_OK if the element was successfully added
- *         - CATL_STATUS_FAILED_TO_ALLOCATE_MEMORY if memory allocation failed
- *         - CATL_STATUS_INVALID_MEMORY if stack or value pointer is NULL
- */
-CatlExitStatus catl_stack_enqueue(catl_stack_t* stack, void* value);
+CatlExitStatus catl_queue_pop(catl_queue_t* queue);
 
-/**
- * @brief  Returns a pointer to the top element of the stack without removing it
- * @param stack  Pointer to the stack
- * @return void* pointer to the top element, or NULL if stack is empty or stack pointer is NULL
- */
-void* catl_stack_front(catl_stack_t* stack);
+CatlExitStatus catl_stack_front(void** out, catl_queue_t* queue);
 
-#endif //  !CATL_STACK_H
+#endif
 
 

@@ -17,11 +17,6 @@ file(GLOB SOURCE_FILES
   "src/pair/*.c"
 )
 
-set(TESTING
-  "test.c"
-)
-
 add_executable( testing
   ${SOURCE_FILES}
-  ${TESTING}
 )

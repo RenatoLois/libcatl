@@ -25,18 +25,6 @@ CatlExitStatus catl_pair_destroy(catl_pair_t *pair) {
   return CATL_STATUS_OK;
 }
 
-// get functions defined in the header
-/*
-static inline void* catl_pair_get_first(catl_pair_t* pair) { 
-  return (pair && pair->first) ? pair->first : NULL;
-}
-
-static inline void* catl_pair_get_second(catl_pair_t* pair) {
-  return (pair && pair->second) ? pair->second : NULL;
-}
-*/
-
-
 CatlExitStatus catl_pair_set_first(catl_pair_t* pair, void* data) {
   if(!pair || !data) return CATL_STATUS_INVALID_MEMORY;
   if(pair->first) pair->first_delete_function(pair->first);
