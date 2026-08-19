@@ -49,9 +49,6 @@ CatlExitStatus catl_linked_list_find_first(
   bool (*compare_func) (const void* fixed_data, const void* iteration_data)
 );
 
-// deprecated -> use catl_linked_list_find_first() instead, passing NULL as 'value' parameter and ignoring the first parameter in compare_func
-// CatlExitStatus catl_linked_list_filter_first(size_t* idx_buffer, void** out, catl_linked_list_t* list, bool (*filter_func) (void* data));
-
 CatlExitStatus catl_linked_list_copy(void** out, const catl_linked_list_t* list);
 
 #endif

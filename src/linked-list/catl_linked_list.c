@@ -195,10 +195,7 @@ CatlExitStatus catl_linked_list_set(catl_linked_list_t* list, const size_t idx, 
 
 CatlExitStatus catl_linked_list_get(void** out, const catl_linked_list_t* list, const size_t idx) {
   if(!list || !out) return CATL_STATUS_NULL_POINTER;
-  if(idx >= list->length) {
-    (*out) = NULL;
-    return CATL_STATUS_OUT_OF_RANGE;
-  }
+  if(idx >= list->length) return CATL_STATUS_OUT_OF_RANGE;
 
   catl_linked_list_node_t* current_node = catl_linked_list_node_get_at_idx(idx, list);
 

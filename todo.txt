@@ -1,5 +1,12 @@
 em queue, stack, array list e linked list e static list, tornar parametros const
-em linked list implementar get node
+// deprecated -> em linked list implementar get node -> em vez disso fazer iterator
+em array list, refazer com static array para evitar cache miss
+reimplementar pair
+criar hashmap
+criar unrolled linked list
+criar memory pool
+criar btree
+
 
 
 // old
